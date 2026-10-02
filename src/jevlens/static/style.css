@@ -828,7 +828,12 @@ input[type="range"] {
     max-width: 145px;
   }
   .select-group label {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
   .studio-grid > .panel {
     padding: 20px;
@@ -916,6 +921,27 @@ input[type="range"] {
   }
 }
 @media (max-width: 600px) {
+  .evidence-card p,
+  .answer-claim,
+  .answer-state {
+    font-size: 16px;
+  }
+  .hint,
+  .mode-note,
+  .warnings,
+  .text-button {
+    font-size: 12px;
+  }
+  .scenario,
+  .text-button,
+  .delete-doc,
+  .citation,
+  input[type="range"] {
+    min-height: 44px;
+  }
+  .delete-doc {
+    min-width: 44px;
+  }
   main {
     padding: 0 16px;
   }
