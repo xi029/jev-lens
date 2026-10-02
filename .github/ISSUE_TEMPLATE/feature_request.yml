@@ -1,0 +1,13 @@
+name: Feature request
+description: Suggest a useful evidence workflow
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and a concrete example

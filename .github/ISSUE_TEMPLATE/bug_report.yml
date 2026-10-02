@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible JevLens problem
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and steps to reproduce
+      description: Include the expected and actual behavior. Use synthetic documents.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, Python, JevLens version, provider, checkpoint
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized trace or error
+      description: Traces contain your question and source text. Remove private information and keys.

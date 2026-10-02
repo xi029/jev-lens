@@ -1,0 +1,9 @@
+.venv
+.laya-venv
+.cache
+data
+artifacts
+dist
+uv.lock
+*.jpg
+*.png

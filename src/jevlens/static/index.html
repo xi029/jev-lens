@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="JevLens — a local evidence workbench. Decide before you generate with Laya, Jev and Ollama."
+    />
+    <title>JevLens · Evidence before answers</title>
+    <link rel="icon" href="/static/lens.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#question">Skip to question</a>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="JevLens home"
+        ><img src="/static/lens.svg" alt="" width="34" height="34" />Jev<span>Lens</span></a
+      >
+      <div class="workspace-label">LOCAL WORKSPACE <span class="status-dot"></span></div>
+      <div class="nav-item active">
+        <span class="nav-symbol">◎</span> Evidence studio <span class="tiny">01</span>
+      </div>
+      <div class="sidebar-section">
+        <div class="section-label">KNOWLEDGE SOURCES <span id="document-count">0</span></div>
+        <div id="documents" class="documents"></div>
+        <label class="upload-button" for="file"><span>＋</span> Add document</label>
+        <input id="file" type="file" accept=".md,.txt" class="file-input" />
+        <p class="hint">Markdown / text · UTF-8 · up to 200 KB</p>
+        <button id="load-samples" class="text-button">Load sample knowledge</button>
+        <button id="load-conflict" class="text-button">Add conflicting policy</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="section-label">RECENT DECISIONS</div>
+        <div id="history" class="history"><p class="hint">Your traces will appear here.</p></div>
+      </div>
+      <div class="sidebar-footer">
+        <span class="status-dot"></span> Stored on your machine
+        <a href="https://github.com/xi029/jev-lens" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="breadcrumb">Workspace</span><span class="slash">/</span> Evidence studio
+        </div>
+        <span class="version">OPEN SOURCE <span id="version">v0.1.0</span></span>
+      </header>
+      <section class="intro">
+        <div class="eyebrow"><span></span> DECISION-FIRST RAG</div>
+        <h1>Evidence before <span>answers.</span></h1>
+        <p>See what your model knows. Decide when it should speak.</p>
+        <div class="intro-badge">Laya · Jev · Ollama <span>One inspectable workflow</span></div>
+      </section>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <section class="query-panel panel">
+        <div class="panel-heading">
+          <span class="section-label">01 / ASK YOUR KNOWLEDGE</span
+          ><span id="provider-badge" class="badge">LEXICAL DEMO</span>
+        </div>
+        <form id="query-form">
+          <label class="sr-only" for="question">Question about your documents</label
+          ><textarea
+            id="question"
+            rows="2"
+            maxlength="500"
+            required
+            placeholder="Ask a question about your documents…"
+          >
+How do I request a refund?</textarea
+          >
+          <div class="query-toolbar">
+            <div class="select-group">
+              <label for="provider">Decision</label
+              ><select id="provider">
+                <option value="demo">Demo simulation</option>
+                <option value="ollama">Ollama · local</option>
+                <option value="laya">Laya · open weights</option>
+                <option value="jev">Jev · hosted</option>
+              </select>
+            </div>
+            <div class="select-group">
+              <label for="generator">Answer</label
+              ><select id="generator">
+                <option value="extractive">Evidence excerpts</option>
+                <option value="ollama">Ollama · generate</option>
+              </select>
+            </div>
+            <button id="run" class="primary" type="submit">Inspect evidence <span>↗</span></button>
+          </div>
+        </form>
+        <div class="scenarios" id="scenarios"></div>
+        <p id="mode-note" class="mode-note">
+          Demo uses a lexical simulation. Its scores are illustrative, not AI probabilities.
+        </p>
+      </section>
+      <section class="pipeline" aria-label="Workflow">
+        <div>
+          <span class="step-number">1</span> Retrieve <small id="step-retrieve">Local BM25</small>
+        </div>
+        <span class="arrow">→</span>
+        <div>
+          <span class="step-number">2</span> Decide
+          <small id="step-decide">Typed distribution</small>
+        </div>
+        <span class="arrow">→</span>
+        <div><span class="step-number">3</span> Gate <small id="step-gate">Your policy</small></div>
+        <span class="arrow">→</span>
+        <div>
+          <span class="step-number">4</span> Respond
+          <small id="step-respond">Only with evidence</small>
+        </div>
+      </section>
+      <div class="studio-grid">
+        <section class="panel decision-panel">
+          <div class="panel-heading">
+            <span class="section-label">02 / DECISION SIGNAL</span
+            ><span id="latency" class="mono muted">— ms</span>
+          </div>
+          <div id="decision-empty" class="empty">
+            <div class="empty-lens">◎</div>
+            <p>Your evidence, under the lens.</p>
+            <span>Run a question to inspect the decision.</span>
+          </div>
+          <div id="decision-content" hidden>
+            <div class="decision-title">
+              <span id="action-icon">↗</span>
+              <div>
+                <h2 id="action-title">Ready to answer</h2>
+                <p id="reason"></p>
+              </div>
+            </div>
+            <div id="distribution" class="distribution"></div>
+            <p id="semantics" class="hint"></p>
+            <div class="decision-meta">
+              <span id="model-name" class="mono"></span><span id="input-size" class="mono"></span>
+            </div>
+          </div>
+        </section>
+        <section class="panel policy-panel">
+          <div class="panel-heading">
+            <span class="section-label">03 / POLICY REPLAY</span
+            ><span class="badge subtle">NO INFERENCE</span>
+          </div>
+          <h2>Move the threshold.<br />Watch the decision change.</h2>
+          <p class="muted">Replay the same evidence judgment with a different policy.</p>
+          <label class="slider-label" for="support"
+            >Minimum support <output id="support-value">70%</output></label
+          ><input id="support" type="range" min="25" max="100" value="70" /><label
+            class="slider-label"
+            for="conflict"
+            >Conflict review trigger <output id="conflict-value">35%</output></label
+          ><input id="conflict" type="range" min="5" max="100" value="35" />
+          <div id="replay-result" class="replay-result" aria-live="polite">
+            Your policy applies to the next question.
+          </div>
+          <p class="hint">Replaying changes the route only. It does not generate a new answer.</p>
+        </section>
+        <section class="panel evidence-panel">
+          <div class="panel-heading">
+            <span class="section-label">04 / EVIDENCE USED</span
+            ><span id="evidence-count" class="mono muted">0 excerpts</span>
+          </div>
+          <div id="evidence">
+            <p class="empty-line">Retrieved source excerpts will appear here.</p>
+          </div>
+        </section>
+        <section class="panel answer-panel">
+          <div class="panel-heading">
+            <span class="section-label">05 / RESPONSE</span
+            ><span id="generation-badge" class="badge subtle">WAITING</span>
+          </div>
+          <div id="answer">
+            <p class="empty-line">A useful answer starts with enough evidence.</p>
+          </div>
+          <div id="warnings" class="warnings"></div>
+        </section>
+      </div>
+      <section class="trace-bar">
+        <div>
+          <span class="status-dot"></span
+          ><span id="trace-label">Every decision leaves an inspectable trail.</span>
+        </div>
+        <div>
+          <button id="show-trace" class="text-button" disabled>View raw trace</button
+          ><a id="export" class="text-button disabled" aria-disabled="true">Export JSON ↓</a>
+        </div>
+      </section>
+      <details id="raw-trace" class="raw-trace" hidden>
+        <summary>Exact input, decision and timings</summary>
+        <pre id="trace-json"></pre>
+      </details>
+      <footer class="main-footer">
+        <span>JevLens <span class="muted">/ Decide before you generate.</span></span
+        ><span class="muted">Independent project · Apache-2.0</span>
+      </footer>
+    </main>
+  </body>
+</html>

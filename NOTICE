@@ -1,0 +1,8 @@
+JevLens
+Copyright 2026 xi029 and contributors
+
+An independent open-source application. Not affiliated with or endorsed by
+TypeSafe AI, the Laya authors, Convai Innovations, Ollama, or Qwen.
+
+Laya is an optional, separately licensed dependency. Model weights and upstream
+code are not bundled in this repository. See their upstream license and model card.

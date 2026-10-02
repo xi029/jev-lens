@@ -1,0 +1,272 @@
+{
+  "created": "2026-10-02T12:09:32.869286+00:00",
+  "provider": "ollama",
+  "dataset": "8 original fictional routing smoke cases; not held-out or representative",
+  "disclaimer": "Demo is a lexical simulation. Ollama estimates are uncalibrated. Do not infer general accuracy or provider rankings from this fixture.",
+  "policy": {
+    "support_threshold": 0.7,
+    "conflict_threshold": 0.35
+  },
+  "configuration": {
+    "ollama_model": "qwen3.5:4b",
+    "laya_model": "english",
+    "laya_state_chars": 1600,
+    "laya_balance_options": true
+  },
+  "cases": [
+    {
+      "case": "refund",
+      "question": "How do I request a refund?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.8163265306122449,
+        "partial": 0.15306122448979592,
+        "missing": 0.030612244897959183,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 2.43,
+        "decision": 21436.36,
+        "generation": 0.02,
+        "total": 21438.82
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.8,
+        "partial": 0.15,
+        "missing": 0.03,
+        "conflicting": 0.0
+      },
+      "usage": {
+        "input_tokens": 331,
+        "output_tokens": 32,
+        "validation_retries": 0
+      }
+    },
+    {
+      "case": "deployment",
+      "question": "What port does the service listen on?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.8,
+        "partial": 0.15,
+        "missing": 0.03,
+        "conflicting": 0.02
+      },
+      "timing_ms": {
+        "retrieval": 1.67,
+        "decision": 43791.43,
+        "generation": 0.03,
+        "total": 43793.12
+      },
+      "warnings": [
+        "Ollama's first decision output was invalid. One schema-repair retry was made with the same model; the valid response is shown."
+      ],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.8,
+        "partial": 0.15,
+        "missing": 0.03,
+        "conflicting": 0.02
+      },
+      "usage": {
+        "input_tokens": 421,
+        "output_tokens": 33,
+        "validation_retries": 1
+      }
+    },
+    {
+      "case": "database",
+      "question": "What is the default database?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.8,
+        "partial": 0.15,
+        "missing": 0.03,
+        "conflicting": 0.02
+      },
+      "timing_ms": {
+        "retrieval": 1.44,
+        "decision": 10695.96,
+        "generation": 0.01,
+        "total": 10697.41
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.8,
+        "partial": 0.15,
+        "missing": 0.03,
+        "conflicting": 0.02
+      },
+      "usage": {
+        "input_tokens": 366,
+        "output_tokens": 33,
+        "validation_retries": 0
+      }
+    },
+    {
+      "case": "privacy",
+      "question": "Is telemetry disabled by default?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 1.0,
+        "partial": 0.0,
+        "missing": 0.0,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 1.62,
+        "decision": 9845.48,
+        "generation": 0.02,
+        "total": 9847.12
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 1.0,
+        "partial": 0.0,
+        "missing": 0.0,
+        "conflicting": 0.0
+      },
+      "usage": {
+        "input_tokens": 369,
+        "output_tokens": 30,
+        "validation_retries": 0
+      }
+    },
+    {
+      "case": "pricing",
+      "question": "What is the exact team plan pricing?",
+      "expected": "retrieve_more",
+      "actual": "retrieve_more",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.05555555555555556,
+        "partial": 0.4444444444444445,
+        "missing": 0.5,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 2.28,
+        "decision": 9769.67,
+        "generation": 0.0,
+        "total": 9771.95
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.1,
+        "partial": 0.8,
+        "missing": 0.9,
+        "conflicting": 0.0
+      },
+      "usage": {
+        "input_tokens": 256,
+        "output_tokens": 30,
+        "validation_retries": 0
+      }
+    },
+    {
+      "case": "missing",
+      "question": "Who won the lunar chess championship?",
+      "expected": "abstain",
+      "actual": "abstain",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.0,
+        "partial": 0.0,
+        "missing": 1.0,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 1.46,
+        "decision": 0.03,
+        "generation": 0.0,
+        "total": 1.49
+      },
+      "warnings": [],
+      "model": "skipped-no-evidence",
+      "raw_probabilities": {},
+      "usage": {}
+    },
+    {
+      "case": "chinese",
+      "question": "本地部署默认端口是多少？",
+      "expected": "answer",
+      "actual": "retrieve_more",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.6956521739130435,
+        "partial": 0.17391304347826086,
+        "missing": 0.13043478260869562,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 1.23,
+        "decision": 18896.89,
+        "generation": 0.0,
+        "total": 18898.12
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.8,
+        "partial": 0.2,
+        "missing": 0.15,
+        "conflicting": 0.0
+      },
+      "usage": {
+        "input_tokens": 314,
+        "output_tokens": 29,
+        "validation_retries": 0
+      }
+    },
+    {
+      "case": "conflict",
+      "question": "How many days do I have to request a refund?",
+      "expected": "review_conflict",
+      "actual": "retrieve_more",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.08403361344537816,
+        "partial": 0.6722689075630253,
+        "missing": 0.07563025210084033,
+        "conflicting": 0.16806722689075632
+      },
+      "timing_ms": {
+        "retrieval": 1.36,
+        "decision": 23487.46,
+        "generation": 0.0,
+        "total": 23488.82
+      },
+      "warnings": [],
+      "model": "qwen3.5:4b",
+      "raw_probabilities": {
+        "supported": 0.1,
+        "partial": 0.8,
+        "missing": 0.09,
+        "conflicting": 0.2
+      },
+      "usage": {
+        "input_tokens": 444,
+        "output_tokens": 31,
+        "validation_retries": 0
+      }
+    }
+  ],
+  "completed": 8,
+  "errors": 0,
+  "route_matches": 6,
+  "median_total_ms": 14797.76,
+  "answer_rate": 0.5
+}

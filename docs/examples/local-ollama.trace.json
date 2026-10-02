@@ -1,0 +1,93 @@
+{
+  "question": "How do I request a refund?",
+  "action": "answer",
+  "reason": "The estimated support meets your selected threshold.",
+  "policy": {
+    "support_threshold": 0.7,
+    "conflict_threshold": 0.35
+  },
+  "decision": {
+    "probabilities": {
+      "supported": 0.8163265306122449,
+      "partial": 0.15306122448979592,
+      "missing": 0.030612244897959183,
+      "conflicting": 0.0
+    },
+    "provider": "ollama",
+    "model": "qwen3.5:4b",
+    "semantics": "LLM self-reported weights normalized to sum 1; uncalibrated.",
+    "input_chars": 504,
+    "usage": {
+      "input_tokens": 331,
+      "output_tokens": 32
+    },
+    "question_schema": {},
+    "raw_probabilities": {
+      "supported": 0.8,
+      "partial": 0.15,
+      "missing": 0.03,
+      "conflicting": 0.0
+    }
+  },
+  "evidence": [
+    {
+      "id": "c05d494ed683",
+      "document_id": "76138cfd9eb18c28",
+      "source": "refund-policy.md",
+      "text": "Customers can request a refund within 30 days of purchase. To request a refund, email support@northstar.example with your order ID. Refunds go to the original payment method within 5 business days.",
+      "score": 4.8033,
+      "position": 0
+    },
+    {
+      "id": "b9ed3f6b9682",
+      "document_id": "76138cfd9eb18c28",
+      "source": "refund-policy.md",
+      "text": "Annual subscriptions are eligible for a refund within 30 days of the initial purchase. Renewals are non-refundable. This policy applies to purchases on or after September 1, 2026.",
+      "score": 1.6541,
+      "position": 1
+    }
+  ],
+  "retrieved_count": 2,
+  "input_state": {
+    "question": "How do I request a refund?",
+    "excerpts": [
+      {
+        "id": "c05d494ed683",
+        "text": "Customers can request a refund within 30 days of purchase. To request a refund, email support@northstar.example with your order ID. Refunds go to the original payment method within 5 business days."
+      },
+      {
+        "id": "b9ed3f6b9682",
+        "text": "Annual subscriptions are eligible for a refund within 30 days of the initial purchase. Renewals are non-refundable. This policy applies to purchases on or after September 1, 2026."
+      }
+    ]
+  },
+  "claims": [
+    {
+      "text": "Customers can request a refund by emailing support@northstar.example with their order ID within 30 days of purchase.",
+      "evidence_ids": [
+        "c05d494ed683"
+      ]
+    },
+    {
+      "text": "Annual subscriptions are eligible for a refund only if the purchase was made on or after September 1, 2026.",
+      "evidence_ids": [
+        "b9ed3f6b9682"
+      ]
+    }
+  ],
+  "generator": "ollama",
+  "generator_called": true,
+  "generation_error": null,
+  "warnings": [
+    "Citation IDs are validated. Semantic support of generated claims is not verified."
+  ],
+  "timing_ms": {
+    "retrieval": 1.51,
+    "decision": 41496.72,
+    "generation": 47926.06,
+    "total": 89424.29
+  },
+  "id": "9bdbe19c32384ca993aa14d314241c82",
+  "created": "2026-10-02T12:02:35.080119+00:00",
+  "schema_version": 1
+}

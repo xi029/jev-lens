@@ -1,0 +1,19 @@
+services:
+  jevlens:
+    build: .
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      JEVLENS_PROVIDER: ${JEVLENS_PROVIDER:-demo}
+      JEVLENS_OLLAMA_URL: http://host.docker.internal:11434
+      JEVLENS_OLLAMA_MODEL: ${JEVLENS_OLLAMA_MODEL:-qwen3.5:4b}
+      JEVLENS_LAYA_URL: http://host.docker.internal:8123
+      JEVLENS_LAYA_MODEL: ${JEVLENS_LAYA_MODEL:-english}
+      JEVLENS_LAYA_API_KEY: ${JEVLENS_LAYA_API_KEY:-}
+      JEVLENS_JEV_API_KEY: ${JEVLENS_JEV_API_KEY:-}
+    volumes:
+      - jevlens-data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  jevlens-data:

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jevlens"
+version = "0.1.0"
+description = "Decide before you generate. A local evidence workbench for Laya, Jev and Ollama."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{name = "xi029"}]
+keywords = ["jev", "laya", "rag", "ollama", "system-one", "decision-model", "local-first"]
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.28,<1", "pydantic-settings>=2.7,<3", "python-multipart>=0.0.20,<1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+laya = ["laya[serve]>=0.3.7,<1"]
+
+[project.scripts]
+jevlens = "jevlens.cli:main"
+
+[project.urls]
+Repository = "https://github.com/xi029/jev-lens"
+Issues = "https://github.com/xi029/jev-lens/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jevlens"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--basetemp=.cache/pytest --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".cache"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]

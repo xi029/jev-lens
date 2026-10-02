@@ -1,0 +1,201 @@
+{
+  "created": "2026-10-02T11:44:46.450806+00:00",
+  "provider": "laya",
+  "dataset": "8 original fictional routing smoke cases; not held-out or representative",
+  "disclaimer": "Demo is a lexical simulation. Ollama estimates are uncalibrated. Do not infer general accuracy or provider rankings from this fixture.",
+  "policy": {
+    "support_threshold": 0.7,
+    "conflict_threshold": 0.35
+  },
+  "cases": [
+    {
+      "case": "refund",
+      "question": "How do I request a refund?",
+      "expected": "answer",
+      "actual": "retrieve_more",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.6338411216121612,
+        "partial": 0.15772873537353735,
+        "missing": 0.11290272527252726,
+        "conflicting": 0.09552741774177417
+      },
+      "timing_ms": {
+        "retrieval": 2.49,
+        "decision": 2960.77,
+        "generation": 0.01,
+        "total": 2963.27
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "deployment",
+      "question": "What port does the service listen on?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.7747302719728028,
+        "partial": 0.09272312768723127,
+        "missing": 0.0669482501749825,
+        "conflicting": 0.0655983501649835
+      },
+      "timing_ms": {
+        "retrieval": 2.0,
+        "decision": 2999.62,
+        "generation": 0.03,
+        "total": 3001.65
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "database",
+      "question": "What is the default database?",
+      "expected": "answer",
+      "actual": "retrieve_more",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.6598838466153385,
+        "partial": 0.1186721302869713,
+        "missing": 0.09337256774322568,
+        "conflicting": 0.12807145535446457
+      },
+      "timing_ms": {
+        "retrieval": 1.37,
+        "decision": 2941.15,
+        "generation": 0.0,
+        "total": 2942.53
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "privacy",
+      "question": "Is telemetry disabled by default?",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.8797277397260275,
+        "partial": 0.046298800119988,
+        "missing": 0.0341742500749925,
+        "conflicting": 0.0397992100789921
+      },
+      "timing_ms": {
+        "retrieval": 1.4,
+        "decision": 3118.13,
+        "generation": 0.01,
+        "total": 3119.54
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "pricing",
+      "question": "What is the exact team plan pricing?",
+      "expected": "retrieve_more",
+      "actual": "review_conflict",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.029148542645735426,
+        "partial": 0.15794096340365965,
+        "missing": 0.420883799120088,
+        "conflicting": 0.39202669483051694
+      },
+      "timing_ms": {
+        "retrieval": 1.51,
+        "decision": 1717.29,
+        "generation": 0.0,
+        "total": 1718.8
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "missing",
+      "question": "Who won the lunar chess championship?",
+      "expected": "abstain",
+      "actual": "abstain",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.0,
+        "partial": 0.0,
+        "missing": 1.0,
+        "conflicting": 0.0
+      },
+      "timing_ms": {
+        "retrieval": 1.38,
+        "decision": 0.03,
+        "generation": 0.0,
+        "total": 1.41
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "skipped-no-evidence"
+    },
+    {
+      "case": "chinese",
+      "question": "本地部署默认端口是多少？",
+      "expected": "answer",
+      "actual": "answer",
+      "correct": true,
+      "probabilities": {
+        "supported": 0.7792,
+        "partial": 0.084525,
+        "missing": 0.066,
+        "conflicting": 0.070275
+      },
+      "timing_ms": {
+        "retrieval": 1.33,
+        "decision": 3157.12,
+        "generation": 0.01,
+        "total": 3158.46
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    },
+    {
+      "case": "conflict",
+      "question": "How many days do I have to request a refund?",
+      "expected": "review_conflict",
+      "actual": "retrieve_more",
+      "correct": false,
+      "probabilities": {
+        "supported": 0.6401575057505751,
+        "partial": 0.12958104810481047,
+        "missing": 0.08245383538353836,
+        "conflicting": 0.14780761076107612
+      },
+      "timing_ms": {
+        "retrieval": 1.47,
+        "decision": 4063.77,
+        "generation": 0.0,
+        "total": 4065.25
+      },
+      "warnings": [
+        "Laya label order and checkpoint token limits can affect results. Inspect the input, configure max_len, and validate your question schema."
+      ],
+      "model": "laya-rl-agent"
+    }
+  ],
+  "completed": 8,
+  "errors": 0,
+  "route_matches": 4,
+  "median_total_ms": 2982.46,
+  "answer_rate": 0.375
+}
