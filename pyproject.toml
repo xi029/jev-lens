@@ -29,7 +29,8 @@ packages = ["src/jevlens"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--basetemp=.cache/pytest --tb=short"
+addopts = "--tb=short"
+cache_dir = ".cache/pytest-cache"
 
 [tool.ruff]
 line-length = 100

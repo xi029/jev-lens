@@ -34,7 +34,7 @@ UI checked at 375, 768, 1024 and 1440 pixels with no horizontal overflow. Actual
 
 ![Replay changes the suggested route while preserving the original answer](assets/replay.jpg)
 
-Docker and GitHub-hosted CI have not run in this local verification. Their definitions are included; published CI results are the evidence for those platforms.
+Docker was not run in this local verification. GitHub Actions runs the lint, tests, demo evaluation and build on Windows/Linux with Python 3.11–3.13; see the [published CI results](https://github.com/xi029/jev-lens/actions/workflows/ci.yml) for those platforms.
 
 ## Publication checks on October 3, 2026
 
