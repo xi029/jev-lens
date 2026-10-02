@@ -1,6 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="440" viewBox="0 0 1400 440" role="img" aria-label="JevLens: decide before you generate. Local evidence decisions for Laya, Jev and Ollama.">
-<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#28382d" stroke-width=".6"/></pattern></defs>
-<rect width="1400" height="440" rx="18" fill="#111713"/><rect x="820" width="580" height="440" fill="url(#grid)"/><rect width="1400" height="440" rx="18" fill="none" stroke="#344b3c"/>
-<g transform="translate(68,58)"><rect width="48" height="48" rx="12" fill="#203b2b"/><circle cx="21" cy="21" r="11" fill="none" stroke="#8ae4b6" stroke-width="2.5"/><circle cx="21" cy="21" r="4" fill="#8ae4b6"/><path d="M30 30l8 8" stroke="#8ae4b6" stroke-width="3" stroke-linecap="round"/></g>
-<g font-family="Inter,Segoe UI,Arial,sans-serif"><text x="131" y="94" fill="#e8eee9" font-size="37" font-weight="600">Jev<tspan fill="#8ae4b6">Lens</tspan></text><text x="68" y="148" fill="#8ae4b6" font-size="12" letter-spacing="4">DECISION-FIRST RAG</text><text x="66" y="211" fill="#e8eee9" font-size="50" letter-spacing="-1.5">Decide before</text><text x="66" y="269" fill="#8ae4b6" font-size="50" letter-spacing="-1.5">you generate.</text><text x="68" y="313" fill="#a1b0a5" font-size="17">Inspect evidence. Replay thresholds. Know when to abstain.</text><text x="68" y="382" fill="#c1d5c7" font-size="13" letter-spacing="1">LAYA / JEV / OLLAMA</text><text x="359" y="382" fill="#a1b0a5" font-size="13">Local workspace · Open source · Apache-2.0</text></g>
-<g transform="translate(885,65)" font-family="Inter,Segoe UI,Arial,sans-serif"><rect width="426" height="307" rx="12" fill="#19281e" stroke="#435c49"/><text x="25" y="35" fill="#a1b0a5" font-size="10" letter-spacing="2">EVIDENCE SIGNAL / ILLUSTRATION</text><circle cx="31" cy="69" r="5" fill="#8ae4b6"/><text x="47" y="74" fill="#e8eee9" font-size="21">Ready to answer</text><text x="25" y="114" fill="#a1b0a5" font-size="13">Supported</text><rect x="120" y="104" width="226" height="7" rx="4" fill="#2c3f32"/><rect x="120" y="104" width="194" height="7" rx="4" fill="#8ae4b6"/><text x="366" y="113" fill="#e8eee9" font-size="12">86%</text><text x="25" y="151" fill="#a1b0a5" font-size="13">Partial</text><rect x="120" y="141" width="226" height="7" rx="4" fill="#2c3f32"/><rect x="120" y="141" width="23" height="7" rx="4" fill="#f2c477"/><text x="366" y="150" fill="#e8eee9" font-size="12">10%</text><path d="M25 183H401" stroke="#3d5244"/><text x="25" y="213" fill="#a1b0a5" font-size="12">Same judgment. A different policy.</text><path d="M25 245H395" stroke="#4d6a57" stroke-width="3"/><path d="M25 245H263" stroke="#8ae4b6" stroke-width="3"/><circle cx="263" cy="245" r="7" fill="#8ae4b6"/><text x="25" y="281" fill="#8ae4b6" font-size="12">Threshold replay</text><text x="301" y="281" fill="#a1b0a5" font-size="11">0 model calls</text></g></svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1400"
+  height="440"
+  viewBox="0 0 1400 440"
+  role="img"
+  aria-label="JevLens: decide before you generate. Local evidence decisions for Laya, Jev and Ollama."
+>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#28382d" stroke-width=".6" />
+    </pattern>
+  </defs>
+  <rect width="1400" height="440" rx="18" fill="#111713" />
+  <rect x="820" width="580" height="440" fill="url(#grid)" />
+  <rect width="1400" height="440" rx="18" fill="none" stroke="#344b3c" />
+  <g transform="translate(68,58)">
+    <rect width="48" height="48" rx="12" fill="#203b2b" />
+    <circle cx="21" cy="21" r="11" fill="none" stroke="#8ae4b6" stroke-width="2.5" />
+    <circle cx="21" cy="21" r="4" fill="#8ae4b6" />
+    <path d="M30 30l8 8" stroke="#8ae4b6" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="131" y="94" fill="#e8eee9" font-size="37" font-weight="600">
+      Jev
+      <tspan fill="#8ae4b6">Lens</tspan>
+    </text>
+    <text x="68" y="148" fill="#8ae4b6" font-size="12" letter-spacing="4">DECISION-FIRST RAG</text>
+    <text x="66" y="211" fill="#e8eee9" font-size="50" letter-spacing="-1.5">Decide before</text>
+    <text x="66" y="269" fill="#8ae4b6" font-size="50" letter-spacing="-1.5">you generate.</text>
+    <text x="68" y="313" fill="#a1b0a5" font-size="17">
+      Inspect evidence. Replay thresholds. Know when to abstain.
+    </text>
+    <text x="68" y="382" fill="#c1d5c7" font-size="13" letter-spacing="1">LAYA / JEV / OLLAMA</text>
+    <text x="359" y="382" fill="#a1b0a5" font-size="13">
+      Local workspace · Open source · Apache-2.0
+    </text>
+  </g>
+  <g transform="translate(885,65)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="426" height="307" rx="12" fill="#19281e" stroke="#435c49" />
+    <text x="25" y="35" fill="#a1b0a5" font-size="10" letter-spacing="2">
+      EVIDENCE SIGNAL / ILLUSTRATION
+    </text>
+    <circle cx="31" cy="69" r="5" fill="#8ae4b6" />
+    <text x="47" y="74" fill="#e8eee9" font-size="21">Ready to answer</text>
+    <text x="25" y="114" fill="#a1b0a5" font-size="13">Supported</text>
+    <rect x="120" y="104" width="226" height="7" rx="4" fill="#2c3f32" />
+    <rect x="120" y="104" width="194" height="7" rx="4" fill="#8ae4b6" />
+    <text x="366" y="113" fill="#e8eee9" font-size="12">86%</text>
+    <text x="25" y="151" fill="#a1b0a5" font-size="13">Partial</text>
+    <rect x="120" y="141" width="226" height="7" rx="4" fill="#2c3f32" />
+    <rect x="120" y="141" width="23" height="7" rx="4" fill="#f2c477" />
+    <text x="366" y="150" fill="#e8eee9" font-size="12">10%</text>
+    <path d="M25 183H401" stroke="#3d5244" />
+    <text x="25" y="213" fill="#a1b0a5" font-size="12">Same judgment. A different policy.</text>
+    <path d="M25 245H395" stroke="#4d6a57" stroke-width="3" />
+    <path d="M25 245H263" stroke="#8ae4b6" stroke-width="3" />
+    <circle cx="263" cy="245" r="7" fill="#8ae4b6" />
+    <text x="25" y="281" fill="#8ae4b6" font-size="12">Threshold replay</text>
+    <text x="301" y="281" fill="#a1b0a5" font-size="11">0 model calls</text>
+  </g>
+</svg>

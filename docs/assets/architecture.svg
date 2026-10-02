@@ -1,6 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="370" viewBox="0 0 1400 370" role="img" aria-label="Local documents flow through retrieval, typed decisions and a deterministic gate. Accepted evidence reaches the generator. Saved traces support replay without inference.">
-<rect width="1400" height="370" rx="16" fill="#131a16"/><g font-family="Inter,Segoe UI,Arial,sans-serif"><text x="42" y="42" fill="#a1b0a5" font-size="12" letter-spacing="3">THE WORKFLOW / NO HIDDEN MODEL FALLBACKS</text>
-<g fill="#202c24" stroke="#4c6554"><rect x="42" y="93" width="206" height="108" rx="9"/><rect x="305" y="93" width="210" height="108" rx="9"/><rect x="575" y="93" width="260" height="108" rx="9"/><rect x="895" y="93" width="184" height="108" rx="9"/><rect x="1140" y="93" width="218" height="108" rx="9"/></g>
-<g fill="#e8eee9" font-size="19"><text x="63" y="128">Your documents</text><text x="327" y="128">Retrieve</text><text x="597" y="128">Decide</text><text x="917" y="128">Gate</text><text x="1162" y="128">Respond</text></g>
-<g fill="#a1b0a5" font-size="12"><text x="63" y="157">Markdown / text</text><text x="63" y="178">Local SQLite workspace</text><text x="327" y="157">BM25 + Chinese bigrams</text><text x="327" y="178">Visible, bounded excerpts</text><text x="597" y="157">Laya · Jev · Ollama</text><text x="597" y="178">4 outcomes + distribution</text><text x="917" y="157">Your thresholds</text><text x="917" y="178">Deterministic policy</text><text x="1162" y="157">Excerpts or Ollama</text><text x="1162" y="178">Validated citation IDs</text></g>
-<g stroke="#8ae4b6" stroke-width="2" fill="none"><path d="M252 147h43m-7-5 7 5-7 5M520 147h45m-7-5 7 5-7 5M839 147h46m-7-5 7 5-7 5M1083 147h47m-7-5 7 5-7 5M987 206v32h-280"/></g><text x="1088" y="83" fill="#8ae4b6" font-size="10">ANSWER ONLY</text><rect x="42" y="264" width="1316" height="64" rx="8" fill="#1b2820" stroke="#3b5846"/><text x="65" y="303" fill="#8ae4b6" font-size="16">Inspect + replay</text><text x="272" y="302" fill="#bacdc0" font-size="13">Exact input · Source IDs · Probability semantics · Timing · JSON export · New thresholds, zero inference</text><text x="609" y="242" fill="#f2c477" font-size="11">RETRIEVE MORE / ABSTAIN / REVIEW CONFLICT → NO GENERATION</text></g></svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1400"
+  height="370"
+  viewBox="0 0 1400 370"
+  role="img"
+  aria-label="Local documents flow through retrieval, typed decisions and a deterministic gate. Accepted evidence reaches the generator. Saved traces support replay without inference."
+>
+  <rect width="1400" height="370" rx="16" fill="#131a16" />
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="42" y="42" fill="#a1b0a5" font-size="12" letter-spacing="3">
+      THE WORKFLOW / NO HIDDEN MODEL FALLBACKS
+    </text>
+    <g fill="#202c24" stroke="#4c6554">
+      <rect x="42" y="93" width="206" height="108" rx="9" />
+      <rect x="305" y="93" width="210" height="108" rx="9" />
+      <rect x="575" y="93" width="260" height="108" rx="9" />
+      <rect x="895" y="93" width="184" height="108" rx="9" />
+      <rect x="1140" y="93" width="218" height="108" rx="9" />
+    </g>
+    <g fill="#e8eee9" font-size="19">
+      <text x="63" y="128">Your documents</text>
+      <text x="327" y="128">Retrieve</text>
+      <text x="597" y="128">Decide</text>
+      <text x="917" y="128">Gate</text>
+      <text x="1162" y="128">Respond</text>
+    </g>
+    <g fill="#a1b0a5" font-size="12">
+      <text x="63" y="157">Markdown / text</text>
+      <text x="63" y="178">Local SQLite workspace</text>
+      <text x="327" y="157">BM25 + Chinese bigrams</text>
+      <text x="327" y="178">Visible, bounded excerpts</text>
+      <text x="597" y="157">Laya · Jev · Ollama</text>
+      <text x="597" y="178">4 outcomes + distribution</text>
+      <text x="917" y="157">Your thresholds</text>
+      <text x="917" y="178">Deterministic policy</text>
+      <text x="1162" y="157">Excerpts or Ollama</text>
+      <text x="1162" y="178">Validated citation IDs</text>
+    </g>
+    <g stroke="#8ae4b6" stroke-width="2" fill="none">
+      <path
+        d="M252 147h43m-7-5 7 5-7 5M520 147h45m-7-5 7 5-7 5M839 147h46m-7-5 7 5-7 5M1083 147h47m-7-5 7 5-7 5M987 206v32h-280"
+      />
+    </g>
+    <text x="1088" y="83" fill="#8ae4b6" font-size="10">ANSWER ONLY</text>
+    <rect x="42" y="264" width="1316" height="64" rx="8" fill="#1b2820" stroke="#3b5846" />
+    <text x="65" y="303" fill="#8ae4b6" font-size="16">Inspect + replay</text>
+    <text x="272" y="302" fill="#bacdc0" font-size="13">
+      Exact input · Source IDs · Probability semantics · Timing · JSON export · New thresholds, zero
+      inference
+    </text>
+    <text x="609" y="242" fill="#f2c477" font-size="11">
+      RETRIEVE MORE / ABSTAIN / REVIEW CONFLICT → NO GENERATION
+    </text>
+  </g>
+</svg>
