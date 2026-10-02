@@ -14,7 +14,7 @@ Use `docs/assets/hero.svg` as a starting point for a social preview; GitHub's so
 
 ## Release v0.1.0 draft
 
-JevLens puts an inspectable decision layer between retrieval and generation. The local workbench supports Laya, hosted Jev, and Ollama; shows exact provider excerpts; gates generation; exports traces; and replays thresholds without new inference.
+JevLens puts an inspectable decision layer between retrieval and generation. The local workbench supports Laya, hosted Jev, and Ollama; shows exact provider excerpts; gates generation; exports traces; and replays thresholds without new inference. An external evidence API lets existing RAG projects keep their retriever and generator.
 
 Included: an account-free demo, original fictional knowledge samples, CLI and JSON API, Windows/Linux CI, Apache-2.0 licensing, and English/Chinese documentation.
 

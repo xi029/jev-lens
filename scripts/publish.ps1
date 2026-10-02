@@ -17,6 +17,6 @@ if ($LASTEXITCODE -eq 0) {
 }
 gh repo create $Repository --public --source . --remote origin --push --description 'Decide before you generate. Local evidence gates, threshold replay and inspectable RAG traces for Laya, Jev and Ollama.'
 if ($LASTEXITCODE -ne 0) { throw 'Repository creation or push failed. Inspect GitHub before retrying.' }
-gh api -X PUT "repos/$Repository/topics" -f 'names[]=jev' -f 'names[]=laya' -f 'names[]=rag' -f 'names[]=ollama' -f 'names[]=local-ai' -f 'names[]=decision-models' -f 'names[]=python' -f 'names[]=fastapi'
+gh api -X PUT "repos/$Repository/topics" -f 'names[]=jev' -f 'names[]=laya' -f 'names[]=rag' -f 'names[]=ollama' -f 'names[]=local-ai' -f 'names[]=decision-models' -f 'names[]=python' -f 'names[]=fastapi' -f 'names[]=system-one' -f 'names[]=qwen' -f 'names[]=explainable-ai'
 if ($LASTEXITCODE -ne 0) { Write-Warning 'Repository published, but topics were not updated.' }
 Write-Output "Published https://github.com/$Repository"

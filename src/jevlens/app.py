@@ -9,8 +9,8 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from . import __version__
 from .config import Settings
-from .engine import replay, run_query
-from .models import DocumentInput, Query, ReplayInput
+from .engine import replay, run_decision, run_query
+from .models import DecisionQuery, DocumentInput, Query, ReplayInput
 from .providers import ProviderError
 from .samples import CONFLICT_DOCUMENT, DOCUMENTS, SCENARIOS
 from .store import Store
@@ -118,6 +118,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def query(body: Query):
         try:
             return await run_query(store, settings, body)
+        except ProviderError as exc:
+            raise HTTPException(502, str(exc)) from exc
+
+    @app.post("/api/decide")
+    async def decide(body: DecisionQuery):
+        try:
+            return await run_decision(store, settings, body)
         except ProviderError as exc:
             raise HTTPException(502, str(exc)) from exc
 

@@ -36,6 +36,12 @@ UI checked at 375, 768, 1024 and 1440 pixels with no horizontal overflow. Actual
 
 Docker and GitHub-hosted CI have not run in this local verification. Their definitions are included; published CI results are the evidence for those platforms.
 
+## Publication checks on October 3, 2026
+
+The external evidence API and runnable callback adapter were added after the original fixture run. Final local checks: 48 tests passed; Python lint/format, JavaScript syntax and Markdown/frontend formatting passed. Both external demo routes (answer and abstain), the direct Python entry point and offline policy replay were exercised. The external adapter also completed a real request with the installed `qwen3.5:4b`, which allowed the fictional supported refund answer. This single request verifies integration, not model accuracy.
+
+The demo fixture retained its 6/8 authored route outcomes. The wheel and source distribution built successfully and were inspected for private/runtime paths; none were present. The new SVG integration diagram was rendered and inspected. No additional live Laya or hosted Jev evaluation was performed in this final check.
+
 ## Evaluate your own deployment
 
 Collect real questions and freeze the evidence each retriever returns. Label whether it fully supports an answer, misses details, has no answer, or conflicts. Use an independent split to choose thresholds. Evaluate checkpoints, languages and question wording separately.

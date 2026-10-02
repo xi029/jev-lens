@@ -1,7 +1,7 @@
 import math
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 Provider = Literal["demo", "ollama", "laya", "jev"]
 Action = Literal["answer", "retrieve_more", "abstain", "review_conflict"]
@@ -13,11 +13,9 @@ class Policy(BaseModel):
     conflict_threshold: float = Field(default=0.35, ge=0.05, le=1)
 
 
-class Query(BaseModel):
+class QuestionInput(BaseModel):
     question: str = Field(min_length=3, max_length=500)
     provider: Provider | None = None
-    generator: Literal["extractive", "ollama"] = "extractive"
-    top_k: int = Field(default=4, ge=1, le=8)
     policy: Policy = Field(default_factory=Policy)
 
     @field_validator("question")
@@ -27,6 +25,31 @@ class Query(BaseModel):
         if len(value) < 3:
             raise ValueError("Enter a question with at least three non-whitespace characters.")
         return value
+
+
+class Query(QuestionInput):
+    generator: Literal["extractive", "ollama", "none"] = "extractive"
+    top_k: int = Field(default=4, ge=1, le=8)
+
+
+class ExternalEvidence(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    id: str = Field(min_length=1, max_length=120, pattern=r"^[A-Za-z0-9_.:-]+$")
+    source: str = Field(default="external", min_length=1, max_length=240)
+    text: str = Field(min_length=1, max_length=12_000)
+
+
+class DecisionQuery(QuestionInput):
+    model_config = ConfigDict(extra="forbid")
+    evidence: list[ExternalEvidence] = Field(max_length=8)
+
+    @model_validator(mode="after")
+    def check_evidence(self):
+        if len({item.id for item in self.evidence}) != len(self.evidence):
+            raise ValueError("Evidence IDs must be unique within a request.")
+        if sum(len(item.text) for item in self.evidence) > 48_000:
+            raise ValueError("External evidence must total 48,000 characters or fewer.")
+        return self
 
 
 class DocumentInput(BaseModel):

@@ -149,7 +149,13 @@ function render(trace) {
     card.append(
       heading,
       el("p", "", e.text),
-      el("div", "evidence-id mono", `BM25 ${e.score.toFixed(2)} · ${e.id}`),
+      el(
+        "div",
+        "evidence-id mono",
+        trace.evidence_origin === "external"
+          ? `External evidence · ${e.id}`
+          : `BM25 ${e.score.toFixed(2)} · ${e.id}`,
+      ),
     );
     $("evidence").append(card);
   });
@@ -173,19 +179,39 @@ function render(trace) {
   if (!trace.claims.length) {
     const block = el("div", "answer-state");
     block.append(
-      el("strong", "", trace.generation_error ? "Generation failed" : actions[trace.action]),
-      el("span", "", trace.generation_error || trace.reason),
+      el(
+        "strong",
+        "",
+        trace.generation_error
+          ? "Generation failed"
+          : trace.generator === "none"
+            ? "Decision only"
+            : actions[trace.action],
+      ),
+      el(
+        "span",
+        "",
+        trace.generation_error ||
+          (trace.generator === "none"
+            ? "No answer was generated. Use this route and the judged excerpts in your application."
+            : trace.reason),
+      ),
     );
     $("answer").append(block);
   }
   $("generation-badge").textContent = trace.generator_called
     ? "OLLAMA CALLED"
-    : trace.action === "answer"
-      ? "EXCERPTS ONLY"
-      : "GENERATOR SKIPPED";
+    : trace.generator === "none"
+      ? "DECISION ONLY"
+      : trace.action === "answer"
+        ? "EXCERPTS ONLY"
+        : "GENERATOR SKIPPED";
   $("warnings").replaceChildren();
   trace.warnings.forEach((w) => $("warnings").append(el("p", "", w)));
-  $("step-retrieve").textContent = `${trace.retrieved_count} candidates`;
+  $("step-retrieve").textContent =
+    trace.evidence_origin === "external"
+      ? `${trace.retrieved_count} supplied excerpts`
+      : `${trace.retrieved_count} candidates`;
   $("step-decide").textContent = trace.decision.provider;
   $("step-gate").textContent = trace.action.replaceAll("_", " ");
   $("step-respond").textContent = trace.generator_called

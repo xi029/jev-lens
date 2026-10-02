@@ -1,15 +1,18 @@
 from time import perf_counter
 
 from .config import Settings
-from .models import Claim, Decision, Policy, Query, apply_policy
+from .models import Claim, Decision, DecisionQuery, Evidence, Policy, Query, apply_policy
 from .providers import ProviderError, evaluate, generate
 from .retrieval import retrieve
 from .store import Store
 
 
-async def run_query(store: Store, settings: Settings, query: Query) -> dict:
+async def run_query(
+    store: Store, settings: Settings, query: Query, *, evidence: list[Evidence] | None = None
+) -> dict:
     start = perf_counter()
-    candidates = retrieve(store.documents(), query.question, query.top_k)
+    external = evidence is not None
+    candidates = evidence if external else retrieve(store.documents(), query.question, query.top_k)
     retrieved_at = perf_counter()
     provider = query.provider or settings.provider
     decision, evidence, state = await evaluate(provider, settings, query.question, candidates)
@@ -25,7 +28,7 @@ async def run_query(store: Store, settings: Settings, query: Query) -> dict:
                 claims = (await generate(settings, query.question, evidence)).claims
             except ProviderError as exc:
                 generation_error = str(exc)
-        else:
+        elif query.generator == "extractive":
             # Verbatim evidence, explicitly displayed as excerpts, not a synthesized answer.
             claims = [Claim(text=e.text, evidence_ids=[e.id]) for e in evidence[:2]]
     finished = perf_counter()
@@ -64,6 +67,7 @@ async def run_query(store: Store, settings: Settings, query: Query) -> dict:
             "decision": decision.model_dump(),
             "evidence": [e.model_dump() for e in evidence],
             "retrieved_count": len(candidates),
+            "evidence_origin": "external" if external else "bm25",
             "input_state": state,
             "claims": [c.model_dump() for c in claims],
             "generator": query.generator,
@@ -77,6 +81,32 @@ async def run_query(store: Store, settings: Settings, query: Query) -> dict:
                 "total": round((finished - start) * 1000, 2),
             },
         }
+    )
+
+
+async def run_decision(store: Store, settings: Settings, query: DecisionQuery) -> dict:
+    """Judge caller-supplied retrieval results; never retrieve or generate an answer."""
+    evidence = [
+        Evidence(
+            id=item.id,
+            document_id=f"external:{item.id}",
+            source=item.source,
+            text=item.text,
+            score=0,
+            position=position,
+        )
+        for position, item in enumerate(query.evidence)
+    ]
+    return await run_query(
+        store,
+        settings,
+        Query(
+            question=query.question,
+            provider=query.provider,
+            policy=query.policy,
+            generator="none",
+        ),
+        evidence=evidence,
     )
 
 
